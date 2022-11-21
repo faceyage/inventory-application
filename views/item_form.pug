@@ -21,10 +21,10 @@ block content
                 else
                     option(value=category._id)=category.name
         label(for="password") Admin Password
-        input#password(type="text", name="password" placeholder="enter admin password to update item" required)
+        input#password(type="text", name="password" placeholder="enter admin password" required)
 
         input(type="submit", value="Save Item")
     if errors 
-        ul
+        ul.form-errors
             each err in errors 
                 li= err.msg

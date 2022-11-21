@@ -79,13 +79,12 @@ exports.item_create_post = [
     .withMessage("Stock can't be negative")
     .escape(),
   body("category", "category must be specified").escape(),
-  //! commented because you first have to remove image when upload not successful
-  // body("password", "password must be specified")
-  //   .trim()
-  //   .isLength({ min: 1 })
-  //   .equals(process.env.ADMIN_PASSWORD)
-  //   .withMessage("Passwords not match")
-  //   .escape(),
+  body("password", "password must be specified")
+    .trim()
+    .isLength({ min: 1 })
+    .equals(process.env.ADMIN_PASSWORD)
+    .withMessage("Passwords not match")
+    .escape(),
   (req, res, next) => {
     console.log("Uploaded Image: ", req.file);
     const errors = validationResult(req);
@@ -101,8 +100,14 @@ exports.item_create_post = [
     });
 
     if (!errors.isEmpty()) {
-      //re-render item_create_get with error messages, sanitized values
+      //delete uploaded image on error
+      try {
+        fs.unlinkSync(req.file.path);
+      } catch (err) {
+        console.error("Error: Can't delete file on unsuccessfull creation.\n", err);
+      }
 
+      //re-render item_create_get with error messages, sanitized values
       Category.find({}).exec(function (err, category_list) {
         if (err) return next(err);
 
@@ -184,7 +189,6 @@ exports.item_update_post = [
     .withMessage("Stock can't be negative")
     .escape(),
   body("category", "category must be specified").escape(),
-  body("name", "name must be specified").trim().isLength({ min: 1 }).escape(),
   body("password", "password must be specified")
     .trim()
     .isLength({ min: 1 })

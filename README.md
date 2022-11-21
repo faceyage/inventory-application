@@ -7,4 +7,4 @@ Frontend: Html, Scss
 Backend: Nodejs(express), Javascript  
 Database: Mongodb (mongoose)
 
-[LIVE DEMO 👈]()
+[LIVE DEMO 👈](https://inventory-application-production.up.railway.app/)

@@ -21,6 +21,14 @@
   }
 }
 
+.delete-warning form {
+  margin: 0;
+}
+
+.form-errors {
+  color: red;
+}
+
 //tablet design
 @include tablet {
   .items {
