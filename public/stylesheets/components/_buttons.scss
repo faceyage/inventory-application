@@ -1,0 +1,15 @@
+.btn {
+  background-color: var(--secondary-color);
+  padding: 0.5rem 1rem;
+  border-radius: 0.7rem;
+  margin-right: 0.5rem;
+  font-size: 1.3rem;
+
+  &.update {
+    background-color: rgb(56, 56, 142);
+  }
+
+  &.delete {
+    background-color: red;
+  }
+}

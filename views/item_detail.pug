@@ -1,0 +1,24 @@
+extends layout
+
+block content
+  div.item-detail-card
+    .item-img
+      img(src=item.img, alt=item.name)
+    .item-info
+      h1.title=item.name
+      p=item.desc
+      .price-stock
+        p.price= "$" + item.price
+        if item.stock
+            p.stock.available Available
+        else 
+            p.stock.no-stock Out of stock
+      .item-actions 
+        a.btn.update(href=item.url + "/update") Update
+        a.btn.delete(href=item.url + "/delete") Delete
+      .item-category
+        h3 Category:
+        a.category(href=item.category.url)=item.category.name 
+      
+
+

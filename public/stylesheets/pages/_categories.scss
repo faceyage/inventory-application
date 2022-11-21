@@ -1,0 +1,15 @@
+@use "../abstracts/" as *;
+@use "../components/" as *;
+
+.categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.category {
+  @extend .btn;
+  background-color: green;
+  //layout
+  margin-bottom: 1rem;
+}

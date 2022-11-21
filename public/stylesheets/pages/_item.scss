@@ -1,0 +1,65 @@
+@use "../abstracts/" as *;
+@use "../components/" as *;
+
+.item-detail-card {
+  padding-left: 1rem;
+  * {
+    margin-bottom: 1rem;
+  }
+
+  .item-img > img {
+    height: 400px;
+    max-width: 100%;
+    object-fit: cover;
+  }
+
+  .price-stock {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    .price,
+    .stock {
+      @extend .btn;
+    }
+
+    .stock {
+      &.available {
+        background-color: green;
+      }
+
+      &.no-stock {
+        background-color: red;
+      }
+    }
+  }
+}
+
+.delete-warning {
+  * {
+    margin-bottom: 1rem;
+  }
+}
+
+@include tablet {
+  .item-detail-card {
+    display: flex;
+    gap: 3rem;
+
+    padding: 0 1rem;
+  }
+
+  .item-img {
+    flex: 1;
+  }
+
+  .item-info {
+    flex: 2;
+  }
+
+  .item-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+}

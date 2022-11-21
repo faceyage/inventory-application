@@ -1,0 +1,21 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    meta(name="viewport", content="width=device-width,initial-scale=1")
+  body
+    header
+      nav
+        .logo
+          a(href="/") Gamer Inventory
+        ul.nav-items
+          li
+            a(href="/") Home
+          li
+            a(href="/categories/") Categories
+          li
+            a(href="/createItem") Add Item
+           
+    main
+      block content

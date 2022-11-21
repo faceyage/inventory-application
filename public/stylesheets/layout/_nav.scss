@@ -1,0 +1,39 @@
+@use "../abstracts/" as *;
+
+nav {
+  @include flex-center;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid var(--secondary-color);
+}
+
+.nav-items {
+  display: flex;
+  gap: 0.5rem;
+  font-size: large;
+}
+
+.logo {
+  font-size: large;
+  font-weight: bold;
+  user-select: none;
+}
+
+@include tablet {
+  nav {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 2rem 1rem;
+  }
+
+  .logo {
+    font-size: x-large;
+  }
+
+  .nav-items {
+    font-size: x-large;
+    gap: 1rem;
+  }
+}

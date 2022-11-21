@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  .delete-warning
+    h1.title #{title}: #{item.name}
+    p Do you really want to delete this item?
+    form(action="", method="post") 
+      div.form-group 
+          input#itemid(type="hidden", name="itemid", required, value=item._id)
+          if errors
+            each err in errors 
+              p=err.msg
+          label(for="password") Admin Password: 
+          input#password(name="password", required)
+          input.btn.delete(type="submit", value="Delete Item")

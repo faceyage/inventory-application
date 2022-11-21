@@ -1,0 +1,50 @@
+@use "../abstracts/" as *;
+
+.items {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+}
+
+.item-card {
+  .item-name {
+    margin-top: 1rem;
+    text-align: center;
+  }
+
+  img {
+    width: 100%;
+    height: 10rem;
+
+    object-fit: contain;
+  }
+}
+
+//tablet design
+@include tablet {
+  .items {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .item-card {
+    .item-img > img {
+      height: 20rem;
+    }
+  }
+
+  .item-name {
+    font-size: x-large;
+  }
+}
+
+//desktop design
+@include desktop {
+  .items {
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  }
+
+  body {
+    margin: 0 10%;
+  }
+}

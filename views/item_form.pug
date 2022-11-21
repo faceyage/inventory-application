@@ -1,0 +1,30 @@
+extends layout 
+
+block content 
+    form(action="", enctype="multipart/form-data", method="post")
+        h1.title=title
+        label(for="name") Name
+        input#name(type="text", name="name" placeholder="e.g. Playstation 5" required value=item===undefined ? "" : item.name)
+        label(for="img")= item===undefined ? "Image URL" : "Image Url (Don't touch this field if you don't want to update the image)"
+        input#img(type="file" accept="image/*" , name="img" required=item===undefined value=item===undefined ? "" : item.img)
+        label(for="desc") Description 
+        input#desc(type="text", name="desc" placeholder="description for item" required value=item===undefined ? "" : item.desc)
+        label(for="price") Price 
+        input#price(type="number", name="price" placeholder="price for item (minimum $1)" required min="1" value=item===undefined ? "" : item.price)
+        label(for="stock") Stock 
+        input#stock(type="number", name="stock" placeholder="Available stock number for item (minimum 0)" required min="0" value=item===undefined ? "" : item.stock)
+        label(for="category") Category 
+        select#category(name="category" required)
+            each category in category_list  
+                if item && category._id.toString() === item.category.toString()
+                    option(value=category._id selected)=category.name
+                else
+                    option(value=category._id)=category.name
+        label(for="password") Admin Password
+        input#password(type="text", name="password" placeholder="enter admin password to update item" required)
+
+        input(type="submit", value="Save Item")
+    if errors 
+        ul
+            each err in errors 
+                li= err.msg
